@@ -3,7 +3,7 @@
 import Image from 'next/image'
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import 'animate.css';
+
 export default function StatusContainer() {
     // Set the initial count and target count
     const [count, setCount] = useState<number>(266);

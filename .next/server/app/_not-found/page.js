@@ -1,14 +1,1 @@
-const CHUNK_PUBLIC_PATH = "server/app/_not-found/page.js";
-const runtime = require("../../chunks/ssr/[turbopack]_runtime.js");
-runtime.loadChunk("server/chunks/ssr/node_modules_next_dist_fd79bc._.js");
-runtime.loadChunk("server/chunks/ssr/[root of the server]__ea5163._.js");
-runtime.loadChunk("server/chunks/ssr/app_db13a2._.js");
-runtime.loadChunk("server/chunks/ssr/_27e62e._.css");
-runtime.loadChunk("server/chunks/ssr/node_modules_react-icons_fa6_index_mjs_d21d9a._.js");
-runtime.loadChunk("server/chunks/ssr/node_modules_react-icons_fa_index_mjs_a1beb0._.js");
-runtime.loadChunk("server/chunks/ssr/node_modules_react-icons_lib_b806b5._.js");
-runtime.loadChunk("server/chunks/ssr/node_modules_88fb33._.js");
-runtime.loadChunk("server/chunks/ssr/_589d9c._.js");
-runtime.loadChunk("server/chunks/ssr/_826942._.js");
-runtime.getOrInstantiateRuntimeModule("[project]/.next-internal/server/app/_not-found/page/actions.js [app-rsc] (ecmascript)", CHUNK_PUBLIC_PATH);
-module.exports = runtime.getOrInstantiateRuntimeModule("[project]/node_modules/next/dist/esm/build/templates/app-page.js?page=/_not-found/page { METADATA_0 => \"[project]/app/favicon.ico.mjs { IMAGE => \\\"[project]/app/favicon.ico [app-rsc] (static)\\\" } [app-rsc] (structured image object, ecmascript, Next.js server component)\", MODULE_1 => \"[project]/app/layout.tsx [app-rsc] (ecmascript, Next.js server component)\", MODULE_2 => \"[project]/node_modules/next/dist/client/components/not-found-error.js [app-rsc] (ecmascript, Next.js server component)\" } [app-rsc] (ecmascript)", CHUNK_PUBLIC_PATH).exports;
+"use strict";(()=>{var e={};e.id=409,e.ids=[409],e.modules={399:e=>{e.exports=require("next/dist/compiled/next-server/app-page.runtime.prod.js")},209:e=>{e.exports=require("next/dist/server/app-render/action-async-storage.external.js")},9348:e=>{e.exports=require("next/dist/server/app-render/work-async-storage.external.js")},412:e=>{e.exports=require("next/dist/server/app-render/work-unit-async-storage.external.js")},5315:e=>{e.exports=require("path")},9902:(e,r,t)=>{t.r(r),t.d(r,{GlobalError:()=>a.a,__next_app__:()=>u,pages:()=>l,routeModule:()=>x,tree:()=>p});var o=t(9442),n=t(42),s=t(8190),a=t.n(s),i=t(3289),d={};for(let e in i)0>["default","tree","pages","GlobalError","__next_app__","routeModule"].indexOf(e)&&(d[e]=()=>i[e]);t.d(r,d);let p=["",{children:["/_not-found",{children:["__PAGE__",{},{page:[()=>Promise.resolve().then(t.t.bind(t,6042,23)),"next/dist/client/components/not-found-error"]}]},{}]},{layout:[()=>Promise.resolve().then(t.bind(t,19)),"/Users/macbook/Downloads/Upwork Clients Projects/real-ai/app/layout.tsx"],"not-found":[()=>Promise.resolve().then(t.t.bind(t,6042,23)),"next/dist/client/components/not-found-error"]}],l=[],u={require:t,loadChunk:()=>Promise.resolve()},x=new o.AppPageRouteModule({definition:{kind:n.RouteKind.APP_PAGE,page:"/_not-found/page",pathname:"/_not-found",bundlePath:"",filename:"",appPaths:[]},userland:{loaderTree:p}})}};var r=require("../../webpack-runtime.js");r.C(e);var t=e=>r(r.s=e),o=r.X(0,[492,268,359],()=>t(9902));module.exports=o})();
