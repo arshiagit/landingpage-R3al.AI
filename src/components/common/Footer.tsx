@@ -13,8 +13,8 @@ export default function Footer() {
                     <div className="mb-6 md:mb-0">
                         <Image src={`/assets/svg/logo.svg`} alt="Logo" width={200} height={200} />
                         <p className='text-gray-400 mt-4'>
-                            Accelerated gateway to a <br />
-                            Global Network
+                            Empowering Access to a <br />
+                            World of Innovation
                         </p>
                         <div className="mt-4 flex space-x-4 sm:mt-4">
                             <FaXTwitter className="text-gray-400" />
@@ -26,19 +26,19 @@ export default function Footer() {
                             <h2 className="mb-6 text-sm font-semibold dark:text-white">Objectives</h2>
                             <ul className="text-gray-500 dark:text-gray-400 font-medium">
                                 <li className="mb-4">
-                                    <Link href="https://flowbite.com/" className="hover:underline">Lead Acquisition</Link>
+                                    <Link href="https://flowbite.com/" className="hover:underline">Vision Models</Link>
                                 </li>
                                 <li className="mb-4">
-                                    <Link href="https://tailwindcss.com/" className="hover:underline">Marketing Intelligence</Link>
+                                    <Link href="https://tailwindcss.com/" className="hover:underline">Large Language Models</Link>
                                 </li>
                                 <li className="mb-4">
-                                    <Link href="#" className="hover:underline">Strategic Partnerships</Link>
+                                    <Link href="#" className="hover:underline">Sustainability</Link>
                                 </li>
                                 <li className="mb-4">
-                                    <Link href="#" className="hover:underline">Finance</Link>
+                                    <Link href="#" className="hover:underline">Careers</Link>
                                 </li>
                                 <li>
-                                    <Link href="#" className="hover:underline">Talent Acquisition</Link>
+                                    <Link href="#" className="hover:underline">Strategic Partnerships</Link>
                                 </li>
                             </ul>
                         </div>
