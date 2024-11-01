@@ -1,12 +1,23 @@
+"use client";
 import Image from 'next/image'
 import Link from 'next/link'
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { MdKeyboardArrowDown } from "react-icons/md";
 import { FiMenu } from "react-icons/fi";
 
 export default function NavbarMenu() {
+    const [isScrolled, setIsScrolled] = useState(false);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            setIsScrolled(window.scrollY > 50); // Adjust scroll position threshold if needed
+        };
+
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
     return (
-        <div className='w-full py-6 border-b border-solid border-white/10'>
+        <div className={`w-full py-4 border-b border-solid border-white/10 transition-all duration-300 ${isScrolled ? "fixed top-0 left-0 nav__bg z-50" : "relative"} `}>
             <header className='max-w-screen-xl mx-auto md:px-0 px-3'>
                 <nav className='w-full flex justify-between items-center'>
                     {/* ========= Logo icon =========== */}

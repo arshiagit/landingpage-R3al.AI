@@ -170,6 +170,8 @@ module.exports = {
       backgroud_color: "#080411",
       purple_400: "#4C71FE",
       purple_600: "#2753FD",
+      blue_800: "#13287A",
+      black_400: "#191133",
     }),
     columns: {
       auto: 'auto',

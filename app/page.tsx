@@ -1,7 +1,16 @@
 import TypewriterText from "@/src/components/common/type-writer-text";
+import AboutUsSection from "@/src/components/global/about-us-sec";
+import AIAcrosSection from "@/src/components/global/ai-across-sec";
+import WhyChooseUsSection from "@/src/components/global/choose-us-sec";
+import CybersecuritySection from "@/src/components/global/cyber-security-sec";
+import GetStartedSection from "@/src/components/global/get-started-sec";
+import GlobalNetworkSection from "@/src/components/global/global-network-sec";
+import HowToStartSection from "@/src/components/global/how-to-start-sec";
+import InnvotionSection from "@/src/components/global/innovation-sec";
 import OurProductSection from "@/src/components/global/out-product-sec";
 import PreoblemSolutionSection from "@/src/components/global/problem-and-solution-sec";
 import StatusContainer from "@/src/components/global/status-container";
+import SustainabilitySection from "@/src/components/global/sustainability-sec";
 import Image from "next/image";
 
 export default function Home() {
@@ -39,6 +48,15 @@ export default function Home() {
       <StatusContainer />
       <PreoblemSolutionSection />
       <OurProductSection />
+      <WhyChooseUsSection />
+      <InnvotionSection />
+      <GlobalNetworkSection />
+      <SustainabilitySection />
+      <CybersecuritySection />
+      <HowToStartSection />
+      <AIAcrosSection />
+      <AboutUsSection />
+      <GetStartedSection />
     </main>
   );
 }
