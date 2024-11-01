@@ -25,11 +25,11 @@ export default function Home() {
               AI That Adapts
             </h1>
             <TypewriterText
-              texts={["to Your Needs", "Lead Generation.", "Market Intelligence"]}
+              texts={["Needs", "Data", "Goals", "Architecture", "Vision"]}
               speed={100}
               pauseDuration={2000}
             />
-            <p className="text-gray-300 mt-4 tracking-wide">
+            <p className="text-gray-300 mt-4 xl:mt-0 tracking-wide">
               Accelerating innovation with faster, smarter, and more
             </p>
             <p className="text-gray-300 mt-0.5 tracking-wide">reliable AI models.</p>
@@ -41,7 +41,7 @@ export default function Home() {
 
           {/* ========= right side content ======== */}
           <div className="2xl:w-1/2 xl:w-1/2 md:w-1/2">
-            <Image src={`/assets/images/banner-image.svg`} alt="Banner-Image" className="w-full" width={200} height={100} />
+            <Image src={`/assets/images/banner-image.svg`} alt="Banner-Image" quality={80} className="w-full" width={200} height={100} />
           </div>
         </div>
       </div>

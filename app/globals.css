@@ -4,22 +4,38 @@
 
 
 @layer utilities {
-    .animate-blink {
-      animation: blink 1s steps(2, start) infinite;
-    }
-  
-    @keyframes blink {
-      to {
-        visibility: hidden;
-      }
-    }
+  .animate-blink {
+    animation: blink 1s steps(2, start) infinite;
   }
 
-  .nav__bg {
-    backdrop-filter: blur(24px);
-    background-color: rgba(8, 4, 17, .2);
+  @keyframes blink {
+    to {
+      visibility: hidden;
+    }
+  }
+}
+
+.nav__bg {
+  backdrop-filter: blur(24px);
+  background-color: rgba(8, 4, 17, .2);
+}
+
+.timeline-container {
+  position: relative;
+}
+
+
+.animation__text {
+  will-change: transform;
+  animation: marquee-horizontal 30s linear infinite;
+}
+
+@keyframes marquee-horizontal {
+  0% {
+    transform: translateY(0);
   }
 
-  .timeline-container {
-    position: relative;
+  100% {
+    transform: translateY(-50%);
   }
+}

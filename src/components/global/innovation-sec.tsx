@@ -2,11 +2,30 @@
 
 import { motion, useInView } from 'framer-motion';
 import Image from 'next/image'
-import React, { useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
+
+const items = [
+    'SportTech',
+    'HealthTech',
+    'Artificial Intelligence',
+    'Automotive',
+    'FinTech',
+    'Manufacturing',
+];
 
 export default function InnvotionSection() {
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true, margin: "-50px" });
+    const listRef = useRef<HTMLUListElement | null>(null);
+    const [activeIndex, setActiveIndex] = useState(0);
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setActiveIndex((prevIndex) => (prevIndex + 1) % items.length);
+        }, 3000); // Change every 3 seconds
+
+        return () => clearInterval(interval);
+    }, []);
     return (
         <section className='max-w-screen-xl mx-auto pt-6 md:px-0 px-5'>
             <div className='flex 2xl:flex-row xl:flex-row md:flex-row flex-col md:gap-24 gap-10'>
@@ -44,14 +63,17 @@ export default function InnvotionSection() {
                     </p>
                     <button type="button" className='w-fit max-w-fit px-9 font-medium mt-10 2xl:flex xl:flex md:flex lg:flex hidden py-3 text-white text-sm bg-primary rounded-lg'>Get started</button>
                 </div>
-                <div className='2xl:w-1/2 xl:w-1/2 w-full text-center'>
-                    <ul className='flex flex-col items-start text-white/25 gap-y-8 2xl:text-3xl xl:text-3xl md:text-3xl text-xl font-medium'>
-                        <li>SportTech</li>
-                        <li>HealthTech</li>
-                        <li className='text-white'>Artifical Intelligence</li>
-                        <li className='text-white'>Automotive</li>
-                        <li>FinTech</li>
-                        <li>Manufacturing</li>
+                <div className='2xl:w-1/2 xl:w-1/2 w-full text-center h-96 overflow-hidden mt-10'>
+                    <ul ref={listRef} className='flex flex-col animation__text overflow-hidden items-start text-white/25 gap-y-8 2xl:text-4xl xl:text-4xl md:text-4xl text-xl font-medium'>
+                        {items.concat(items).map((item, index) => (
+                            <li
+                                key={index}
+                                className={`transition-colors duration-500 ${activeIndex === index % items.length ? 'text-white' : 'text-white/25'
+                                    }`}
+                            >
+                                {item}
+                            </li>
+                        ))}
                     </ul>
                 </div>
             </div>

@@ -45,7 +45,7 @@ const TypewriterText: React.FC<TypewriterTextProps> = ({ texts, speed = 100, pau
 
     return (
         <h1 className="2xl:text-7xl xl:text-5xl text-4xl font-medium mt-3.5 overflow-hidden md:h-20 bg-gradient-to-b from-white to-purple_400 text-transparent bg-clip-text">
-            {displayText}
+            to Your {displayText}
         </h1>
     );
 };

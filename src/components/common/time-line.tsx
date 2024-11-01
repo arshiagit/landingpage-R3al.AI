@@ -61,7 +61,7 @@ export const Timeline: React.FC = () => {
                         <p className="text-gray-400">Schedule a consultation where we can discuss your goals, challenges, and how our AI solutions can help. This is an opportunity to explore your ideas in detail.</p>
                     </div>
                     <div className="md:w-1/2 flex justify-center md:justify-start">
-                        <div className="size-3 md:-mr-1.5 -ml-12 md:-mt-12 -mt-52 bg-primary rounded-full"></div>
+                        <div className="size-3 2xl:-mr-1.5 xl:-ml-1.5 -ml-12 md:-mt-12 -mt-52 bg-primary rounded-full"></div>
                     </div>
                 </div>
 
@@ -75,7 +75,7 @@ export const Timeline: React.FC = () => {
                         <p className="text-gray-400">Together, we’ll define the scope of your project. We’ll outline objectives, deliverables, and timelines to ensure we’re aligned on what to expect.</p>
                     </div>
                     <div className="md:w-1/2 flex justify-center md:justify-end">
-                        <div className="size-3  md:-mr-1.5 -ml-12 md:-mt-12 -mt-52 bg-primary rounded-full"></div>
+                        <div className="size-3  md:-mr-1.5 -ml-12 md:-mt-12 xl:-mt-12 -mt-52 bg-primary rounded-full"></div>
                     </div>
                 </div>
 
@@ -88,7 +88,7 @@ export const Timeline: React.FC = () => {
                         <p className="text-gray-400">Our team will create a tailored plan that includes a detailed strategy and implementation roadmap. This step focuses on customizing our approach to fit your requirements.</p>
                     </div>
                     <div className="md:w-1/2 flex justify-center md:justify-start">
-                        <div className="size-3  md:-mr-1.5 -ml-12 md:-mt-12 -mt-52 bg-primary rounded-full"></div>
+                        <div className="size-3  2xl:-mr-1.5 xl:-ml-1.5 -ml-12 md:-mt-12 xl:-mt-11 -mt-52 bg-primary rounded-full"></div>
                     </div>
                 </div>
 
@@ -101,7 +101,7 @@ export const Timeline: React.FC = () => {
                         <p className="text-gray-400">We begin the development phase, where our experts build and test the AI solutions. We ensure everything meets our quality standards and your expectations.</p>
                     </div>
                     <div className="md:w-1/2 flex justify-center md:justify-end">
-                        <div className="size-3  md:-mr-1.5 -ml-12 md:-mt-14 -mt-52 bg-primary rounded-full"></div>
+                        <div className="size-3  md:-mr-1.5 -ml-12 md:-mt-14 xl:-mt-12 -mt-52 bg-primary rounded-full"></div>
                     </div>
                 </div>
                 <div className="relative mb-10 flex flex-col items-start md:flex-row md:items-center">
@@ -113,7 +113,7 @@ export const Timeline: React.FC = () => {
                         <p className="text-gray-400">Once ready, we’ll deploy the solution and provide training and support. Our goal is to ensure a smooth transition and successful integration into your operations.</p>
                     </div>
                     <div className="md:w-1/2 flex justify-center md:justify-start">
-                        <div className="size-3  md:-mr-1.5 -ml-12 md:-mt-14 -mt-52 bg-primary rounded-full"></div>
+                        <div className="size-3  md:-mr-1.5 xl:-ml-1.5 -ml-12 md:-mt-14 xl:-mt-13 -mt-52 bg-primary rounded-full"></div>
                     </div>
                 </div>
             </div>
