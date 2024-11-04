@@ -95,7 +95,7 @@ export default function Footer() {
                             Privacy Policy
                         </Link>
                     </div>
-                    <span className="text-sm text-gray-500 sm:text-center md:mt-0 mt-3 dark:text-gray-400">© 2023 <Link href="" className="hover:underline">R3AL.AI</Link>. All Rights Reserved.
+                    <span className="text-sm text-gray-500 sm:text-center md:mt-0 mt-3 dark:text-gray-400">© 2024 <Link href="" className="hover:underline">R3AL.AI</Link>. All Rights Reserved.
                     </span>
                 </div>
             </div>
