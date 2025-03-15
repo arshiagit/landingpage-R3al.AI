@@ -16,7 +16,7 @@
 
 ror.log*
 
-# env files (can opt-in for commiting if needed)
+# env files (can opt-in for committing if needed)
 .env*
 
 # vercel
@@ -25,3 +25,6 @@ ror.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# local env files
+.env*.local

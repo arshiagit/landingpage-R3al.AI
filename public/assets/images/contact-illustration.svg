@@ -1,0 +1,29 @@
+<svg width="500" height="300" viewBox="0 0 500 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="500" height="300" rx="10" fill="#080411"/>
+  <path d="M250 50C161.635 50 90 121.635 90 210C90 298.365 161.635 370 250 370C338.365 370 410 298.365 410 210C410 121.635 338.365 50 250 50Z" fill="#2753FD" fill-opacity="0.1"/>
+  <path d="M250 70C172.68 70 110 132.68 110 210C110 287.32 172.68 350 250 350C327.32 350 390 287.32 390 210C390 132.68 327.32 70 250 70Z" stroke="#2753FD" stroke-opacity="0.3" stroke-width="2"/>
+  
+  <!-- Envelope -->
+  <rect x="150" y="120" width="200" height="140" rx="10" fill="#2753FD" fill-opacity="0.2" stroke="#2753FD" stroke-width="2"/>
+  <path d="M150 130L250 200L350 130" stroke="#2753FD" stroke-width="2"/>
+  <path d="M150 260L200 210" stroke="#2753FD" stroke-width="2"/>
+  <path d="M350 260L300 210" stroke="#2753FD" stroke-width="2"/>
+  
+  <!-- Dots -->
+  <circle cx="120" cy="100" r="5" fill="#2753FD" fill-opacity="0.5"/>
+  <circle cx="380" cy="100" r="5" fill="#2753FD" fill-opacity="0.5"/>
+  <circle cx="120" cy="280" r="5" fill="#2753FD" fill-opacity="0.5"/>
+  <circle cx="380" cy="280" r="5" fill="#2753FD" fill-opacity="0.5"/>
+  
+  <!-- Small decorative elements -->
+  <circle cx="180" cy="80" r="3" fill="white" fill-opacity="0.5"/>
+  <circle cx="190" cy="80" r="3" fill="white" fill-opacity="0.5"/>
+  <circle cx="200" cy="80" r="3" fill="white" fill-opacity="0.5"/>
+  
+  <circle cx="320" cy="80" r="3" fill="white" fill-opacity="0.5"/>
+  <circle cx="330" cy="80" r="3" fill="white" fill-opacity="0.5"/>
+  <circle cx="340" cy="80" r="3" fill="white" fill-opacity="0.5"/>
+  
+  <!-- Text -->
+  <text x="250" y="290" text-anchor="middle" font-family="Arial" font-size="14" fill="white">Contact R3al.AI</text>
+</svg> 

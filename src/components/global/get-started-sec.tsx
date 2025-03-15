@@ -1,4 +1,7 @@
+"use client";
+
 import React from 'react'
+import Link from 'next/link';
 
 export default function GetStartedSection() {
   return (
@@ -15,9 +18,13 @@ export default function GetStartedSection() {
           Are you ready to scale the unscalable? Talk with
           us to get a tailored approach to your business.
         </p>
-        <div className='md:w-96 w-full bg-white p-4 rounded-lg md:mx-auto mt-8 px-3 relative'>
-          <input type="text" className='border-none outline-none bg-transparent' placeholder='Your e-mail' />
-          <button type="button" className='w-fit max-w-fit px-4 absolute right-2 top-2 font-medium 2xl:flex xl:flex md:flex lg:flex py-2.5 text-white text-sm bg-primary rounded-lg'>Get started</button>
+        <div className='flex justify-center mt-8'>
+          <Link 
+            href="/contact" 
+            className='px-8 py-3 bg-primary text-white font-medium rounded-lg hover:bg-primary/90 transition-all'
+          >
+            Contact Us Now
+          </Link>
         </div>
       </div></div>
      

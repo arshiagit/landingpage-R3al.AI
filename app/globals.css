@@ -16,8 +16,11 @@
 }
 
 .nav__bg {
-  backdrop-filter: blur(24px);
-  background-color: rgba(8, 4, 17, .2);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  background-color: rgba(8, 4, 17, .5);
+  transform: translateZ(0);
+  will-change: transform;
 }
 
 .timeline-container {
@@ -28,6 +31,7 @@
 .animation__text {
   will-change: transform;
   animation: marquee-horizontal 30s linear infinite;
+  transform: translateZ(0);
 }
 
 @keyframes marquee-horizontal {
@@ -38,4 +42,16 @@
   100% {
     transform: translateY(-50%);
   }
+}
+
+/* Add hardware acceleration for smoother scrolling */
+html, body {
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  overflow-x: hidden;
+}
+
+/* Optimize animations */
+* {
+  backface-visibility: hidden;
 }
