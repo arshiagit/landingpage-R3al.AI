@@ -6,12 +6,12 @@ import { MdKeyboardArrowDown } from "react-icons/md";
 import { FiMenu } from "react-icons/fi";
 
 // Debounce function to limit how often the scroll handler fires
-function debounce(func: Function, wait: number) {
+function debounce(func: (args: unknown) => void, wait: number): () => void {
     let timeout: NodeJS.Timeout;
-    return function executedFunction(...args: any[]) {
+    return function executedFunction(): void {
         const later = () => {
             clearTimeout(timeout);
-            func(...args);
+            func(null);
         };
         clearTimeout(timeout);
         timeout = setTimeout(later, wait);
@@ -23,18 +23,21 @@ export default function NavbarMenu() {
     const [showHide, setshowHide] = useState(false);
 
     // Memoize the scroll handler with useCallback
-    const handleScroll = useCallback(
-        debounce(() => {
-            setIsScrolled(window.scrollY > 50);
-        }, 10), // Small debounce time for responsiveness
-        []
+    const handleScroll = useCallback(() => {
+        setIsScrolled(window.scrollY > 50);
+    }, []);
+
+    // Apply debounce to the scroll handler
+    const debouncedHandleScroll = useCallback(
+        debounce(() => handleScroll(), 10),
+        [handleScroll]
     );
 
     useEffect(() => {
         // Add passive: true to improve scroll performance
-        window.addEventListener("scroll", handleScroll, { passive: true });
-        return () => window.removeEventListener("scroll", handleScroll);
-    }, [handleScroll]);
+        window.addEventListener("scroll", debouncedHandleScroll, { passive: true });
+        return () => window.removeEventListener("scroll", debouncedHandleScroll);
+    }, [debouncedHandleScroll]);
 
     return (
         <div className={`w-full py-4 border-b border-solid border-white/10 will-change-transform ${isScrolled ? "fixed top-0 left-0 nav__bg z-50" : "relative"}`}>

@@ -118,7 +118,7 @@ const WhyChooseUsSection = memo(() => {
                     />
                     <h2 className='text-white 2xl:text-3xl xl:text-3xl md:text-3xl lg:text-3xl text-md text-center mt-10'>Performance Improvement</h2>
                     <p className='text-white/50 text-center 2xl:text-sm xl:text-sm md:text-sm lg:text-sm text-sm mt-5'>
-                        At R3AL.AI, we push the boundaries of AI performance, delivering lightning-fast processing and unmatched accuracy. Our models are designed to seamlessly integrate into any system, drastically improving efficiency while reducing costs. Whether you're scaling operations or fine-tuning processes, our AI solutions provide the flexibility and speed needed to stay ahead in a competitive market. With real-time insights and dynamic scalability, we ensure your business performs at its best, now and in the future.
+                        At R3AL.AI, we push the boundaries of AI performance, delivering lightning-fast processing and unmatched accuracy. Our models are designed to seamlessly integrate into any system, drastically improving efficiency while reducing costs. Whether you&apos;re scaling operations or fine-tuning processes, our AI solutions provide the flexibility and speed needed to stay ahead in a competitive market. With real-time insights and dynamic scalability, we ensure your business performs at its best, now and in the future.
                     </p>
                 </motion.div>
                 <motion.div

@@ -47,7 +47,7 @@ export default function ContactPage() {
             <div className="bg-[#2753FD]/10 border border-solid border-primary/25 rounded-2xl p-8">
               <h3 className="text-2xl text-white font-medium mb-4">Our Mission</h3>
               <p className="text-gray-300">
-                At R3al.AI, we're dedicated to making advanced AI accessible and effective for businesses of all sizes. 
+                At R3al.AI, we&apos;re dedicated to making advanced AI accessible and effective for businesses of all sizes. 
                 Our team is committed to providing solutions that adapt to your specific needs and drive real results.
               </p>
             </div>
