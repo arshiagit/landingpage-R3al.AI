@@ -2,6 +2,7 @@
 
 import { motion, useInView } from 'framer-motion';
 import Image from 'next/image'
+import Link from 'next/link';
 import React, { useEffect, useRef, useState } from 'react'
 
 const items = [
@@ -61,7 +62,7 @@ export default function InnvotionSection() {
                     <p className='text-gray-300 mt-6 tracking-wide text-base'>
                         Ready to take your organizations growth to the next level?
                     </p>
-                    <button type="button" className='w-fit max-w-fit px-9 font-medium mt-10 2xl:flex xl:flex md:flex lg:flex hidden py-3 text-white text-sm bg-primary rounded-lg'>Get started</button>
+                    <Link href="/contact" className='w-fit max-w-fit px-9 font-medium mt-10 2xl:flex xl:flex md:flex lg:flex hidden py-3 text-white text-sm bg-primary rounded-lg'>Get started</Link>
                 </div>
                 <div className='2xl:w-1/2 xl:w-1/2 w-full text-center h-96 overflow-hidden mt-10'>
                     <ul ref={listRef} className='flex flex-col animation__text overflow-hidden items-start text-white/25 gap-y-8 2xl:text-4xl xl:text-4xl md:text-4xl text-xl font-medium'>

@@ -3,6 +3,7 @@
 import React, { useRef } from 'react'
 import { motion, useInView } from 'framer-motion';
 import { Timeline } from '../common/time-line';
+import Link from 'next/link';
 
 export default function HowToStartSection() {
     const ref = useRef(null);
@@ -34,7 +35,7 @@ export default function HowToStartSection() {
             </motion.h1>
 
             <div className='flex justify-center pb-6 pt-8'>
-                <button type="button" className='w-fit max-w-fit px-6 font-medium 2xl:flex xl:flex md:flex lg:flex hidden py-2.5 text-white text-sm bg-primary rounded-lg'>Get started</button>
+                <Link href="/contact" className='w-fit max-w-fit px-6 font-medium 2xl:flex xl:flex md:flex lg:flex hidden py-2.5 text-white text-sm bg-primary rounded-lg'>Get started</Link>
             </div>
             {/* timeline */}
             <div className="container mx-auto px-4 py-16 pt-10 pb-0">

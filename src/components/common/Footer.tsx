@@ -26,19 +26,19 @@ export default function Footer() {
                             <h2 className="mb-6 text-sm font-semibold dark:text-white">Objectives</h2>
                             <ul className="text-gray-500 dark:text-gray-400 font-medium">
                                 <li className="mb-4">
-                                    <Link href="https://flowbite.com/" className="hover:underline">Vision Models</Link>
+                                    <Link href="/" className="hover:underline">Vision Models</Link>
                                 </li>
                                 <li className="mb-4">
-                                    <Link href="https://tailwindcss.com/" className="hover:underline">Large Language Models</Link>
+                                    <Link href="/" className="hover:underline">Large Language Models</Link>
                                 </li>
                                 <li className="mb-4">
-                                    <Link href="#" className="hover:underline">Sustainability</Link>
+                                    <Link href="/" className="hover:underline">Sustainability</Link>
                                 </li>
                                 <li className="mb-4">
-                                    <Link href="#" className="hover:underline">Careers</Link>
+                                    <Link href="/" className="hover:underline">Careers</Link>
                                 </li>
                                 <li>
-                                    <Link href="#" className="hover:underline">Strategic Partnerships</Link>
+                                    <Link href="/" className="hover:underline">Strategic Partnerships</Link>
                                 </li>
                             </ul>
                         </div>
@@ -46,17 +46,17 @@ export default function Footer() {
                             <h2 className="mb-6 text-sm font-semibold dark:text-white">Business type</h2>
                             <ul className="text-gray-500 dark:text-gray-400 font-medium">
                                 <li className="mb-4">
-                                    <Link href="" className="hover:underline ">Startups and SMEs</Link>
+                                    <Link href="/" className="hover:underline ">Startups and SMEs</Link>
                                 </li>
                                 <li className="mb-4">
-                                    <Link href="" className="hover:underline">Large Enterprises</Link>
+                                    <Link href="/" className="hover:underline">Large Enterprises</Link>
                                 </li>
                                 <li className="mb-4">
-                                    <Link href="" className="hover:underline ">Governments and <br />
+                                    <Link href="/" className="hover:underline ">Governments and <br />
                                         Public Sector</Link>
                                 </li>
                                 <li className="mb-4">
-                                    <Link href="" className="hover:underline">Investors</Link>
+                                    <Link href="/" className="hover:underline">Investors</Link>
                                 </li>
                             </ul>
                         </div>
@@ -64,16 +64,16 @@ export default function Footer() {
                             <h2 className="mb-6 text-sm font-semibold dark:text-white">Resources</h2>
                             <ul className="text-gray-500 dark:text-gray-400  font-medium">
                                 <li className="mb-4">
-                                    <Link href="" className="hover:underline ">About us</Link>
+                                    <Link href="/" className="hover:underline ">About us</Link>
                                 </li>
                                 <li className='mb-4'>
-                                    <Link href="" className="hover:underline">Pricing</Link>
+                                    <Link href="/" className="hover:underline">Pricing</Link>
                                 </li>
                                 <li className="mb-4">
-                                    <Link href="" className="hover:underline ">Contact us</Link>
+                                    <Link href="/contact" className="hover:underline ">Contact us</Link>
                                 </li>
                                 <li className='mb-4'>
-                                    <Link href="" className="hover:underline">Blog</Link>
+                                    <Link href="/" className="hover:underline">Blog</Link>
                                 </li>
                             </ul>
                         </div>
@@ -82,20 +82,20 @@ export default function Footer() {
                 <hr className="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
                 <div className="sm:flex sm:items-center items-start sm:justify-between gap-3">
                     <div className="flex md:flex-nowrap flex-wrap mt-4 sm:justify-center justify-start sm:mt-0 text-sm">
-                        <Link href="#" className="text-gray-400 md:mt-0 mt-2">
+                        <Link href="/" className="text-gray-400 md:mt-0 mt-2">
                             Term Of Use
                         </Link>
-                        <Link href="#" className="text-gray-400 md:mt-0 mt-2 ms-5">
+                        <Link href="/" className="text-gray-400 md:mt-0 mt-2 ms-5">
                             Accessibility Statement
                         </Link>
-                        <Link href="#" className="text-gray-400 md:mt-0 mt-2 md:ms-5 ms-0">
+                        <Link href="/" className="text-gray-400 md:mt-0 mt-2 md:ms-5 ms-0">
                             Cookies Policy
                         </Link>
-                        <Link href="#" className="text-gray-400 md:mt-0 mt-2 ms-5">
+                        <Link href="/" className="text-gray-400 md:mt-0 mt-2 ms-5">
                             Privacy Policy
                         </Link>
                     </div>
-                    <span className="text-sm text-gray-500 sm:text-center md:mt-0 mt-3 dark:text-gray-400">© 2025 <Link href="" className="hover:underline">R3AL.AI</Link>. All Rights Reserved.
+                    <span className="text-sm text-gray-500 sm:text-center md:mt-0 mt-3 dark:text-gray-400">© 2025 <Link href="/" className="hover:underline">R3AL.AI</Link>. All Rights Reserved.
                     </span>
                 </div>
             </div>
