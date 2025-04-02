@@ -19,7 +19,7 @@ const PreoblemSolutionSection = () => {
                         </li>
                         <li className='inline-flex items-start gap-4 font-medium text-[#99AEFF]'>
                             <BsArrowReturnRight className='text-[#99AEFF] -mt-6' size={70} />
-                            AI systems often require enormous resources and can struggle with all kinds of data.
+                            ​Traditional AI systems often require significant computational resources and can struggle with diverse data types, leading to inefficiencies and increased operational costs.
                         </li>
                     </ul>
                 </div>
@@ -29,7 +29,7 @@ const PreoblemSolutionSection = () => {
                     <ul className='flex flex-col gap-y-6 md:w-60 w-fit mt-8 relative'>
                         <li className='inline-flex items-start gap-4 font-medium text-[#99AEFF]'>
                             <BsArrowReturnRight className='text-[#99AEFF] -mt-6' size={75} />
-                            We provide cutting-edge AI models that are flexible, resource-efficient, and easily integrable into existing systems.
+                            We offer state-of-the-art AI models that are adaptable, efficient in resource utilization, and seamlessly integrate into existing systems.
                         </li>
                         <li className='inline-flex items-start gap-4 font-medium text-[#99AEFF]'>
                             <BsArrowReturnRight className='text-[#99AEFF] -mt-6' size={70} />
@@ -48,7 +48,7 @@ const PreoblemSolutionSection = () => {
                         </li>
                         <li className='inline-flex items-start gap-4 font-medium text-[#99AEFF]'>
                             <BsArrowReturnRight className='text-[#99AEFF] -mt-6' size={70} />
-                            We enable data-driven decisions by delivering real-time insights that help companies stay competitive and agile.
+                            We enable data-driven decisions by delivering real-time insights that help companies stay competitive and agile, ensuring robustness even in uncertain environments.
                         </li>
                     </ul>
                 </div>
