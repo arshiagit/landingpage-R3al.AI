@@ -25,7 +25,7 @@ const PreoblemSolutionSection = () => {
                 </div>
                 <div className='w-full'>
                     <div className='size-10 bg-black border border-solid border-white/20 rounded-full flex justify-center items-center text-sm mb-3 text-white'>02</div>
-                    <span className='text-white font-medium'>Our Apporch</span>
+                    <span className='text-white font-medium'>Our Approach</span>
                     <ul className='flex flex-col gap-y-6 md:w-60 w-fit mt-8 relative'>
                         <li className='inline-flex items-start gap-4 font-medium text-[#99AEFF]'>
                             <BsArrowReturnRight className='text-[#99AEFF] -mt-6' size={75} />
