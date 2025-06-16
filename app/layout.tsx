@@ -1,8 +1,9 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import NavbarMenu from "@/src/components/common/Navbar"; // You can also use <link> for styles
 import Footer from "@/src/components/common/Footer";
+import ConditionalLayout from "@/src/components/common/ConditionalLayout";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -20,7 +21,12 @@ const geistMono = localFont({
 export const metadata: Metadata = {
   title: "R3al.AI - Next Generation AI",
   description: "Accelerating innovation with faster, smarter, and more reliable AI models.",
-  viewport: "width=device-width, initial-scale=1, maximum-scale=1",
+};
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
 };
 
 export default function RootLayout({
@@ -36,9 +42,9 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-backgroud_color scroll-smooth`}
         suppressHydrationWarning>
-          <NavbarMenu />
-        {children}
-        <Footer />
+        <ConditionalLayout>
+          {children}
+        </ConditionalLayout>
       </body>
     </html>
   );

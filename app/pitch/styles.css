@@ -1,0 +1,37 @@
+/* React-PDF styles */
+.react-pdf__Page {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.react-pdf__Page__canvas {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.react-pdf__Document {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Loading and error states */
+.react-pdf__message {
+  color: #ffffff;
+  text-align: center;
+  padding: 2rem;
+}
+
+.react-pdf__message--error {
+  color: #ef4444;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .react-pdf__Page {
+    max-width: calc(100vw - 2rem);
+    margin: 0 1rem;
+  }
+} 
