@@ -6,17 +6,6 @@
       "static/css/app/layout.css",
       "static/chunks/app/layout.js"
     ],
-    "/pitch/loading": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/pitch/loading.js"
-    ],
-    "/pitch/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/pitch/page.css",
-      "static/chunks/app/pitch/page.js"
-    ],
     "/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
@@ -27,10 +16,16 @@
       "static/chunks/main-app.js",
       "static/chunks/app/pitch/layout.js"
     ],
-    "/_not-found/page": [
+    "/pitch/loading": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/_not-found/page.js"
+      "static/chunks/app/pitch/loading.js"
+    ],
+    "/pitch/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/pitch/page.css",
+      "static/chunks/app/pitch/page.js"
     ]
   }
 }

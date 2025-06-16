@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useCallback, useEffect } from 'react';
+import React, { useState, useCallback, useEffect, useMemo } from 'react';
 import { ChevronLeftIcon, ChevronRightIcon, ArrowDownTrayIcon } from '@heroicons/react/24/outline';
 import dynamic from 'next/dynamic';
 import './styles.css';
@@ -19,35 +19,170 @@ const Page = dynamic(
 export default function PitchDeckPage() {
   const [numPages, setNumPages] = useState<number>(0);
   const [pageNumber, setPageNumber] = useState<number>(1);
-  const [scale, setScale] = useState<number>(1.0);
+  const [scale, setScale] = useState<number>(1.0); // Start bij 100% voor volledig zichtbare PDF
   const [loading, setLoading] = useState<boolean>(true);
   const [isMobile, setIsMobile] = useState<boolean>(false);
   const [isClient, setIsClient] = useState<boolean>(false);
+  const [windowSize, setWindowSize] = useState<{width: number, height: number}>({width: 0, height: 0});
+  const [preloadedPages, setPreloadedPages] = useState<Set<number>>(new Set());
+  const [loadingProgress, setLoadingProgress] = useState<number>(0);
+
+  // Memoize PDF options to prevent unnecessary re-renders - OPTIMIZED for speed
+  const pdfOptions = useMemo(() => ({
+    cMapUrl: 'https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/cmaps/',
+    cMapPacked: true,
+    standardFontDataUrl: 'https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/standard_fonts/',
+    // Performance optimizations
+    disableAutoFetch: false, // Allow prefetching
+    disableStream: false, // Enable streaming for faster load
+    disableRange: false, // Enable range requests for partial loading
+    enableXfa: false, // Disable XFA for better performance
+    isEvalSupported: false, // Disable eval for security and performance
+    maxImageSize: 33554432, // Doubled max image size for heavy slides like slide 8
+    cacheSize: 150, // Increased cache size for better performance
+    useWorkerFetch: true, // Use worker for fetching to improve performance
+  }), []);
 
   // Set up PDF worker and check if mobile
   useEffect(() => {
     setIsClient(true);
     
-    // Import and set up PDF.js worker
+    // Import and set up PDF.js worker with optimized configuration
     import('react-pdf').then((reactPdf) => {
-      import('pdfjs-dist').then((pdfjs) => {
-        pdfjs.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js`;
-      });
+      // Use CDN worker for better performance
+      reactPdf.pdfjs.GlobalWorkerOptions.workerSrc = `https://unpkg.com/pdfjs-dist@${reactPdf.pdfjs.version}/build/pdf.worker.min.js`;
+      
+      // Optimize PDF.js settings for better performance
+      reactPdf.pdfjs.GlobalWorkerOptions.workerPort = null;
+      
+      // Enable caching for faster subsequent loads
+      if (typeof window !== 'undefined') {
+        // Pre-warm the worker
+        reactPdf.pdfjs.getDocument({ 
+          url: '/r3alai_pitchdeck_25.pdf',
+          cMapUrl: 'https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/cmaps/',
+          cMapPacked: true,
+          standardFontDataUrl: 'https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/standard_fonts/',
+          disableAutoFetch: false,
+          disableStream: false,
+          disableRange: false
+        });
+      }
+      
+      console.log('PDF.js worker configured, version:', reactPdf.pdfjs.version);
+    }).catch((error) => {
+      console.error('Failed to set up PDF worker:', error);
     });
     
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
+    const handleResize = () => {
+      const width = window.innerWidth;
+      const height = window.innerHeight;
+      setIsMobile(width < 768);
+      setWindowSize({width, height});
     };
     
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
   const onDocumentLoadSuccess = useCallback(({ numPages }: { numPages: number }) => {
     setNumPages(numPages);
     setLoading(false);
+    console.log('PDF loaded successfully with', numPages, 'pages');
   }, []);
+
+  const onDocumentLoadError = useCallback((error: Error) => {
+    console.error('PDF loading error:', error);
+    setLoading(false);
+  }, []);
+
+  const onDocumentLoadProgress = useCallback((progressData: { loaded: number; total: number }) => {
+    const progress = (progressData.loaded / progressData.total) * 100;
+    setLoadingProgress(progress);
+  }, []);
+
+  const onPageLoadSuccess = useCallback((page: any) => {
+    console.log(`Page ${page.pageNumber} loaded successfully`);
+    if (page.pageNumber === 8) {
+      console.timeEnd('Slide 8 Navigation');
+      console.log('Slide 8 loaded - this was the problematic slide');
+    }
+  }, []);
+
+  const onPageLoadError = useCallback((error: Error) => {
+    console.error(`Page loading error:`, error);
+    // Check if it's slide 8 based on current page number
+    if (pageNumber === 8) {
+      console.error('Slide 8 failed to load:', error);
+    }
+  }, [pageNumber]);
+
+  // Preload adjacent pages for faster navigation + prioritize slide 8
+  const preloadAdjacentPages = useCallback(() => {
+    if (!numPages || loading) return;
+    
+    const pagesToPreload = [];
+    
+    // Always prioritize slide 8 (heavy slide) for preloading
+    if (numPages >= 8 && !preloadedPages.has(8)) {
+      pagesToPreload.push(8);
+    }
+    
+    // Preload next page
+    if (pageNumber < numPages) {
+      pagesToPreload.push(pageNumber + 1);
+    }
+    
+    // Preload previous page
+    if (pageNumber > 1) {
+      pagesToPreload.push(pageNumber - 1);
+    }
+    
+    // Preload pages 2 ahead and 2 behind for smoother experience
+    if (pageNumber + 2 <= numPages) pagesToPreload.push(pageNumber + 2);
+    if (pageNumber - 2 >= 1) pagesToPreload.push(pageNumber - 2);
+    
+    // If we're close to slide 8, preload it with higher priority
+    if (Math.abs(pageNumber - 8) <= 3 && numPages >= 8) {
+      pagesToPreload.unshift(8); // Add to front of array for priority
+    }
+    
+    pagesToPreload.forEach(page => {
+      if (!preloadedPages.has(page)) {
+        setPreloadedPages(prev => new Set([...prev, page]));
+      }
+    });
+  }, [pageNumber, numPages, loading, preloadedPages]);
+
+  // Trigger preloading when page changes
+  useEffect(() => {
+    if (numPages > 0) {
+      preloadAdjacentPages();
+    }
+  }, [pageNumber, numPages, preloadAdjacentPages]);
+
+  // Calculate optimal width for the PDF based on viewport - BIGGER sizing
+  const getOptimalWidth = useCallback(() => {
+    if (!isClient || windowSize.width === 0) return undefined;
+    
+    const viewportWidth = windowSize.width;
+    const headerHeight = 128; // Fixed header height (pt-32)
+    const viewportHeight = windowSize.height - headerHeight;
+    
+    if (isMobile) {
+      // On mobile, use most of the width but make it bigger
+      return Math.min(viewportWidth - 16, 900);
+    } else {
+      // On desktop, make PDF much bigger while still fitting
+      const maxWidth = Math.min(viewportWidth - 60, 1400); // Increased from 1000 to 1400
+      const maxHeight = viewportHeight - 80; // Reduced margin from 120 to 80
+      const widthBasedOnHeight = maxHeight * 0.77; // PDF aspect ratio
+      
+      // Prefer width-based sizing to make it bigger, fallback to height-based
+      return Math.min(maxWidth, Math.max(widthBasedOnHeight, 1200)); // Minimum 1200px on desktop
+    }
+  }, [isClient, isMobile, windowSize]);
 
   // Keyboard navigation
   useEffect(() => {
@@ -85,7 +220,14 @@ export default function PitchDeckPage() {
   };
 
   const goToNextPage = () => {
-    setPageNumber(prev => Math.min(prev + 1, numPages));
+    const nextPage = Math.min(pageNumber + 1, numPages);
+    
+    // Add performance timing for slide 8
+    if (nextPage === 8) {
+      console.time('Slide 8 Navigation');
+    }
+    
+    setPageNumber(nextPage);
   };
 
   const zoomIn = () => {
@@ -98,7 +240,7 @@ export default function PitchDeckPage() {
 
   const downloadPDF = () => {
     const link = document.createElement('a');
-    link.href = '/r3alai_pitchdeck.pdf';
+    link.href = '/r3alai_pitchdeck_25.pdf';
     link.download = 'R3al.AI_Pitch_Deck.pdf';
     document.body.appendChild(link);
     link.click();
@@ -121,7 +263,7 @@ export default function PitchDeckPage() {
     <div className="min-h-screen bg-backgroud_color">
       {/* Header with controls */}
       <div className="fixed top-0 left-0 right-0 bg-black/90 backdrop-blur-md border-b border-white/10 z-50">
-        <div className="max-w-screen-xl mx-auto px-4 py-4">
+        <div className="max-w-screen-2xl mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-2 md:space-x-4">
               <h1 className="text-white text-lg md:text-xl font-semibold">R3AL.AI Pitch Deck</h1>
@@ -170,21 +312,31 @@ export default function PitchDeckPage() {
       </div>
 
       {/* PDF Viewer */}
-      <div className="pt-32 pb-8 px-4">
+      <div className="pt-32 pb-8 px-2 md:px-4">
         <div className="flex justify-center">
-          <div className="relative max-w-full overflow-hidden">
+          <div className="relative w-full max-w-7xl overflow-hidden">
             {loading && (
               <div className="flex items-center justify-center h-96">
                 <div className="text-center">
                   <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4"></div>
-                  <div className="text-white text-lg">Loading pitch deck...</div>
+                  <div className="text-white text-lg mb-4">Loading pitch deck...</div>
+                  {loadingProgress > 0 && (
+                    <div className="w-64 bg-gray-700 rounded-full h-2 mx-auto">
+                      <div 
+                        className="bg-primary h-2 rounded-full transition-all duration-300" 
+                        style={{ width: `${Math.min(loadingProgress, 100)}%` }}
+                      ></div>
+                    </div>
+                  )}
                 </div>
               </div>
             )}
             
             <Document
-              file="/r3alai_pitchdeck.pdf"
+              file="/r3alai_pitchdeck_25.pdf"
               onLoadSuccess={onDocumentLoadSuccess}
+              onLoadError={onDocumentLoadError}
+              onLoadProgress={onDocumentLoadProgress}
               loading={
                 <div className="flex items-center justify-center h-96">
                   <div className="text-white">Loading PDF...</div>
@@ -192,25 +344,58 @@ export default function PitchDeckPage() {
               }
               error={
                 <div className="flex items-center justify-center h-96">
-                  <div className="text-red-400">Failed to load PDF. Please try downloading it instead.</div>
+                  <div className="text-center">
+                    <div className="text-red-400 mb-4">Failed to load PDF.</div>
+                    <button
+                      onClick={downloadPDF}
+                      className="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary/80 transition-colors"
+                    >
+                      Download PDF instead
+                    </button>
+                  </div>
                 </div>
               }
               className="flex justify-center"
-              options={{
-                cMapUrl: 'https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/cmaps/',
-                cMapPacked: true,
-                standardFontDataUrl: 'https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/standard_fonts/',
-              }}
+              options={pdfOptions}
             >
-              <Page
-                pageNumber={pageNumber}
-                scale={isMobile ? Math.min(scale, 0.8) : scale}
-                className="shadow-2xl max-w-full h-auto"
-                renderTextLayer={false}
-                renderAnnotationLayer={false}
-                width={isMobile ? Math.min(window.innerWidth - 32, 800) : undefined}
-                canvasBackground="transparent"
-              />
+              <>
+                {/* Main visible page */}
+                <Page
+                  pageNumber={pageNumber}
+                  scale={scale}
+                  className="shadow-2xl max-w-full h-auto transition-transform duration-200"
+                  renderTextLayer={false}
+                  renderAnnotationLayer={false}
+                  width={getOptimalWidth() || (isMobile ? 400 : 1200)}
+                  canvasBackground="transparent"
+                  onLoadSuccess={onPageLoadSuccess}
+                  onLoadError={onPageLoadError}
+                />
+                
+                {/* Hidden preloaded pages for caching */}
+                {Array.from(preloadedPages)
+                  .filter(page => page !== pageNumber && page <= numPages && page >= 1)
+                  .sort((a, b) => {
+                    // Prioritize slide 8 and pages close to current page
+                    if (a === 8) return -1;
+                    if (b === 8) return 1;
+                    return Math.abs(a - pageNumber) - Math.abs(b - pageNumber);
+                  })
+                  .slice(0, 6) // Increased to 6 preloaded pages, prioritizing slide 8
+                  .map(page => (
+                    <div key={`preload-${page}`} className="hidden">
+                      <Page
+                        pageNumber={page}
+                        scale={scale}
+                        renderTextLayer={false}
+                        renderAnnotationLayer={false}
+                        width={getOptimalWidth() || (isMobile ? 400 : 1200)}
+                        canvasBackground="transparent"
+                      />
+                    </div>
+                  ))
+                }
+              </>
             </Document>
 
             {/* Navigation arrows */}
