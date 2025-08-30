@@ -29,7 +29,7 @@ export default function Home() {
         <div className="flex 2xl:flex-row xl:flex-row md:flex-row 2xl:items-center xl:items-center flex-col gap-16">
           {/* ======= left side content ======== */}
           <div className="2xl:w-1/2 xl:w-1/2 md:w-1/2">
-            <div className="w-fit px-7 py-2 bg-[#191133] rounded-full border border-solid border-white/15 bg-gradient-to-b from-white to-purple_400 text-transparent bg-clip-text">The Next Generation of AI</div>
+            <div className="w-fit px-7 py-2 bg-[#191133] rounded-full border border-solid border-white/15 bg-gradient-to-b from-white to-purple_400 text-transparent bg-clip-text">Optimizing AI for a Better Future.</div>
             <h1 className="2xl:text-7xl xl:text-7xl text-4xl font-medium mt-7 text-white">
               AI That Adapts
             </h1>
